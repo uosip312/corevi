@@ -10,8 +10,10 @@ import { AuthServiceService } from '../auth-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  submitted = false;
+  public form = {
+    user: null,
+    pass: null
+  };
 
   constructor(
     public fb: FormBuilder,
@@ -24,22 +26,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.loginForm = this.fb.group({
-      user: ['', Validators.required],
-      pass: ['', Validators.required]
-    });
-  }
+  ngOnInit() { }
 
-  get f() { return this.loginForm.controls; }
+  get f() { return this.form; }
 
   onSubmit() {
-    this.submitted = true;
-
-    // se detiene si el formulario es invalido
-    if (this.loginForm.invalid) {
-      return;
-    }
-    this.authService.login(this.f.user.value, this.f.pass.value);
+    this.authService.login(this.f.user, this.f.pass);
   }
 }

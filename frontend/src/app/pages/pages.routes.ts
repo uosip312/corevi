@@ -12,6 +12,7 @@ import { AddPersonComponent } from './person/add-person/add-person.component';
 import { EditPersonComponent } from './person/edit-person/edit-person.component';
 import { AddDepartmentComponent } from './department/add-department/add-department.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const pagesRoute: Routes = [
   {
@@ -28,6 +29,7 @@ const pagesRoute: Routes = [
       { path: 'departamentos/editar/:id', component: EditDepartmentComponent },
       { path: 'usuarios', component: UserComponent },
       { path: 'reportes', component: ReportComponent },
+      { path: 'perfil', component: ProfileComponent},
       { path: '', redirectTo: '/inicio', pathMatch: 'full' },
     ],
   },

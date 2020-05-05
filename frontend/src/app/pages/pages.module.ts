@@ -20,6 +20,7 @@ import { EditPersonComponent } from './person/edit-person/edit-person.component'
 import { AddPersonComponent } from './person/add-person/add-person.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
 import { AddDepartmentComponent } from './department/add-department/add-department.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AddDepartmentComponent } from './department/add-department/add-departme
     EditPersonComponent,
     AddPersonComponent,
     EditDepartmentComponent,
-    AddDepartmentComponent],
+    AddDepartmentComponent,
+    ProfileComponent],
   exports: [
     PagesComponent,
     DashboardComponent,

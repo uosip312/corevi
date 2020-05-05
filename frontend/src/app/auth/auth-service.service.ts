@@ -23,7 +23,7 @@ export class AuthServiceService {
       localStorage.setItem('access_token', result.token);
       this.router.navigate(['/inicio']);
       return result;
-    });
+    }, error => console.log(error));
   }
 
   getToken() {

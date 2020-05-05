@@ -4,13 +4,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-                    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <form class="form" #loginForm=ngForm (ngSubmit)="onSubmit()">
                         <div class="card card-login card-hidden">
                             <div class="card-header card-header-success text-center">
                                 <h4 class="card-title">Acceso al Sistema</h4>
                                 <img class="text-center" src="../../../assets/image/logo.png" alt="" width="150px" height="75px">
                             </div>
                             <div class="card-body ">
+
                                 <span class="bmd-form-group">
                                 <div class="input-group">
                                   <div class="input-group-prepend">
@@ -18,9 +19,11 @@
                                       <i class="material-icons">face</i>
                                     </span>
                             </div>
-                            <input type="text" name="user" class="form-control" formControlName="user" placeholder="Usuario" [ngClass]="{ 'is-invalid': submitted && f.user.errors }" required/>
+                            <input type="text" name="user" class="form-control" placeholder="Usuario" [(ngModel)]="form.user" required/>
                         </div>
                         </span>
+                        <br>
+
                         <span class="bmd-form-group">
                                 <div class="input-group">
                                   <div class="input-group-prepend">
@@ -28,12 +31,12 @@
                                       <i class="material-icons">lock_outline</i>
                                     </span>
                 </div>
-                <input type="password" name="pass" class="form-control" formControlName="pass" placeholder="Contraseña" [ngClass]="{ 'is-invalid': submitted && f.pass.errors }" required/>
+                <input type="password" name="pass" class="form-control" placeholder="Contraseña" [(ngModel)]="form.pass" required/>
             </div>
             </span>
         </div>
         <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-info btn-lg">Ingresar</button>
+            <button type="submit" class="btn btn-info btn-lg" [disabled]="!loginForm.valid">Ingresar</button>
         </div>
     </div>
     </form>
