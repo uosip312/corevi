@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card ">
+            <form (ngSubmit)="onSubmit()" #formPerson="ngForm">
+                <div class="card-header card-header-success card-header-icon">
+                    <div class="card-icon">
+                        <i class="material-icons">face</i>
+                    </div>
+                    <h4 class="card-title">Agregar Persona</h4>
+                </div>
+                <div class="card-body ">
+                    <div class="form-group">
+                        <label for="nombre" class="bmd-label-floating">Nombre</label>
+                        <input class="form-control" type="text" name="nombre" id="" [(ngModel)]="persons.nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula" class="bmd-label-floating">Cedula</label>
+                        <input class="form-control" type="text" name="cedula" id="" [(ngModel)]="persons.cedula">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono" class="bmd-label-floating">Telefono</label>
+                        <input class="form-control" type="text" name="telefono" id="" [(ngModel)]="persons.telefono">
+                    </div>
+                </div>
+                <div class="card-footer ">
+                    <button type="submit" class="btn btn-fill btn-success">Registrar</button>
+                    <button class="btn btn-fill btn-danger" (click)="volver()">Atras</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
