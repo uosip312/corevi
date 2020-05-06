@@ -24,10 +24,10 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
+        $credentials = request(['user', 'pass']);
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Usuario o Contraseña no existe'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -78,7 +78,8 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'username' => auth()->user()->nombre
+            'username' => auth()->user()->name,
+            'role' => auth()->user()->role
         ]);
     }
 }

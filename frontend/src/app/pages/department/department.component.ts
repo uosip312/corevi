@@ -3,6 +3,7 @@ import { Department } from '../../model/department';
 import { DeparmentApiService } from 'src/app/services/deparment-api.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-department',
@@ -15,6 +16,7 @@ export class DepartmentComponent implements OnInit {
     id: null,
     descrip: null,
   };
+  // tslint:disable: no-string-literal
   constructor(
     private departmentApi: DeparmentApiService,
     private router: Router
@@ -51,12 +53,22 @@ export class DepartmentComponent implements OnInit {
       if (result.value) {
         this.departmentApi.deleteDepartment(id).subscribe((datos) => {
           if (datos['resultado'] === true) {
-            Swal.fire({title: 'Eliminado!', text: 'El Departamento ha sido eliminado.', icon: 'success', timer: 1500});
+            Swal.fire({
+              title: 'Eliminado!',
+              text: 'El Departamento ha sido eliminado.',
+              icon: 'success',
+              timer: 1500,
+            });
             this.getDepartment();
           }
         });
       } else {
-        Swal.fire({title: 'Cancelado', text: 'No ha sido eliminado :)', icon: 'error', timer: 1500});
+        Swal.fire({
+          title: 'Cancelado',
+          text: 'No ha sido eliminado :)',
+          icon: 'error',
+          timer: 1500,
+        });
       }
     });
   }
