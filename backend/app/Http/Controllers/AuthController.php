@@ -39,7 +39,7 @@ class AuthController extends Controller
         }
         if($user->pass == $r->pass){
             $_token = JWTAuth::fromUser($user); //aqui simplemente creo el token con la informacion de la tabla de usuario
-            return response()->json(['token' => $_token,'estado'=>1,'usuario'=>$user->user,'name' => $user->name], 200);
+            return response()->json(['token' => $_token,'userId'=>$user->id,'name' => $user->name, 'role' => $user->role], 200);
         }else{
             return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
         }

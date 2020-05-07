@@ -35,7 +35,7 @@ export class VisitComponent implements OnInit {
     status: null,
   };
 
-  constructor(private visitApi: VisitApiService, private route: Router) {}
+  constructor(private visitApi: VisitApiService, private router: Router) {}
 
   ngOnInit() {
     this.getVisit();
@@ -45,6 +45,9 @@ export class VisitComponent implements OnInit {
     this.visitApi
       .getVisit()
       .subscribe((result: any) => (this.readVisit = result));
+  }
+  addVisit() {
+    this.router.navigate(['/visitas/agregar']);
   }
 
   deleteVisit(id) {

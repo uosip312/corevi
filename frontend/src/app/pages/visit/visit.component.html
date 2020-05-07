@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-success btn-round">
+            <button type="button" class="btn btn-success btn-round" (click)="addVisit()">
         <i class="material-icons">add_circle</i> Agregar
       </button>
         </div>
@@ -54,11 +54,11 @@
                                     <td>{{ visit.HoraSalida }}</td>
                                     <td class="text-right">
                                         <button type="button" [routerLink]="['/visitas/editar', visit.id]" class="btn btn-link btn-info btn-just-icon">
-                      <i class="material-icons">create</i>
-                    </button>
+                                          <i class="material-icons">create</i>
+                                        </button>
                                         <button type="button" id="del" (click)="deleteVisit(visit.id)" class="btn btn-link btn-danger btn-just-icon">
-                      <i class="material-icons">close</i>
-                    </button>
+                                          <i class="material-icons">close</i>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

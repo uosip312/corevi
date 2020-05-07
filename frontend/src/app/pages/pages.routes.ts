@@ -15,11 +15,13 @@ import { EditDepartmentComponent } from './department/edit-department/edit-depar
 import { ProfileComponent } from './profile/profile.component';
 import { AddVisitComponent } from './visit/add-visit/add-visit.component';
 import { EditVisitComponent } from './visit/edit-visit/edit-visit.component';
+import { AuthConfigGuard } from '../auth/auth-config.guard';
 
 const pagesRoute: Routes = [
   {
     path: '',
     component: PagesComponent,
+    canActivate: [AuthConfigGuard],
     children: [
       { path: 'inicio', component: DashboardComponent },
       { path: 'personas', component: PersonComponent },
@@ -27,6 +29,7 @@ const pagesRoute: Routes = [
       { path: 'personas/editar/:id', component: EditPersonComponent },
       { path: 'visitas', component: VisitComponent },
       { path: 'visitas/agregar', component: AddVisitComponent },
+      { path: 'visitas/agregarconper/:idPerson', component: AddVisitComponent },
       { path: 'visitas/editar/:id', component: EditVisitComponent},
       { path: 'departamentos', component: DepartmentComponent },
       { path: 'departamentos/agregar', component: AddDepartmentComponent },

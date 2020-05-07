@@ -55,19 +55,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <label for="HoraSalida" class="col-md-4 col-form-label">Hora Salida</label>
                         <div class="col-md-8">
                             <div class="form-group">
                                 <input class="form-control" type="time" value="00:00" name="HoraSalida" [(ngModel)]="visits.HoraSalida">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <label for="Observacion" class="col-md-4 col-form-label">Observacion</label>
                         <div class="col-md-8">
                             <div class="form-group">
                                 <textarea class="form-control" type="text" name="Observacion" row="2" [(ngModel)]="visits.Observacion"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="recepcionista" class="col-md-4 col-form-label">Recepcionista</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="recepcionista" value="{{recepcionista}}" readonly/>
                             </div>
                         </div>
                     </div>

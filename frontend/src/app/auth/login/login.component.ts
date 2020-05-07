@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     public router: Router
   ) {
     // Redirecciona a inicio si ya esta logado.
-    if ( this.authService.isLoggedIn ){
+    if ( this.authService.isLoggedIn ) {
       this.router.navigate(['/']);
     }
   }

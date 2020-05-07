@@ -53,7 +53,8 @@ class VisitController extends Controller
             return ['resultado' => false, 'mensaje' => 'LA PERSONA Y DEPARTAMENTO SON OBLIGATORIOS'];
         } else {
             $query = "UPDATE visits SET idPersona = '$r->idPersona',idDepartamento='$r->idDepartamento',idEstatus='$r->idEstatus',
-                      Fecha='$r->Fecha',HoraEntrada='$r->HoraEntrada',HoraSalida='$r->HoraSalida',Observacion='$r->Observacion'
+                      Fecha='$r->Fecha',HoraEntrada='$r->HoraEntrada',HoraSalida='$r->HoraSalida',Observacion='$r->Observacion',
+                      idUser='$r->idUser'
                       WHERE id = $r->id";
             $visit = DB::update($query);
             if (!empty($visit)) {
@@ -69,7 +70,7 @@ class VisitController extends Controller
         if (empty($r->idPersona) || empty($r->idDepartamento)) {
             return ['resultado' => false, 'mensaje' => 'LA PERSONA Y DEPARTAMENTO SON OBLIGATORIOS'];
         } else {
-            $query = "INSERT INTO visits (idPersona,idDepartamento,idEstatus,idUser,Fecha,HoraEntrada,HoraSalida,Observacion) VALUES ('$r->idPersona','$r->idDepartamento','$r->idEstatus',1,'$r->Fecha','$r->HoraEntrada','$r->HoraSalida','$r->Observacion')";
+            $query = "INSERT INTO visits (idPersona,idDepartamento,idEstatus,idUser,Fecha,HoraEntrada,Observacion) VALUES ('$r->idPersona','$r->idDepartamento','$r->idEstatus',$r->idUser,'$r->Fecha','$r->HoraEntrada','$r->Observacion')";
             $visit = DB::insert($query);
             if (!empty($visit)) {
                 return ['resultado' => true, 'mensaje' => 'EL REGISTRO SE HA CREADO EXITOSAMENTE'];

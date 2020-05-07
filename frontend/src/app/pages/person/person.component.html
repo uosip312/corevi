@@ -44,12 +44,15 @@
                                     <td>{{ person.cedula }}</td>
                                     <th>{{ person.telefono}} </th>
                                     <td class="text-right">
+                                        <button type="button" [routerLink]="['/visitas/agregarconper', person.id]" class="btn btn-link btn-success btn-just-icon">
+                                        <i class="material-icons">today</i>
+                                      </button>
                                         <button type="button" [routerLink]="['/personas/editar', person.id]" class="btn btn-link btn-info btn-just-icon">
-                      <i class="material-icons">create</i>
-                    </button>
+                                        <i class="material-icons">create</i>
+                                      </button>
                                         <button type="button" id="del" (click)="deletePerson(person.id, person.nombre)" class="btn btn-link btn-danger btn-just-icon">
-                      <i class="material-icons">close</i>
-                    </button>
+                                        <i class="material-icons">close</i>
+                                      </button>
                                     </td>
                                 </tr>
                             </tbody>

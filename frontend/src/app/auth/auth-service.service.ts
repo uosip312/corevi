@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -18,17 +19,15 @@ export class AuthServiceService {
       (result: any) => {
         console.log(result);
         localStorage.setItem('access_token', result.token);
+        localStorage.setItem('userId', result.userId);
+        localStorage.setItem('name', result.name);
+        localStorage.setItem('role', result.role);
         this.router.navigate(['/inicio']);
         return result;
       },
       (error) => console.log(error)
     );
   }
-
-  /* handleError(error) {
-    this.error = error.error.error;
-    return console.log(this.error);
-  } */
 
   getToken() {
     return localStorage.getItem('access_token');
@@ -40,10 +39,17 @@ export class AuthServiceService {
   }
 
   doLogout() {
-    // Elimina usuario del almacenamiento local para desloguearlo
-    const removeToken = localStorage.removeItem('access_token');
-    if (removeToken == null) {
-      this.router.navigate(['/login']);
-    }
+    return this.http.post(`${this.baseUrl}/logout`, User).subscribe((res: any) => {
+      console.log(res);
+      // Elimina usuario del almacenamiento local para desloguearlo
+      const removeToken = localStorage.removeItem('access_token');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('name');
+      localStorage.removeItem('role');
+      if (removeToken == null) {
+        this.router.navigate(['/login']);
+      }
+    });
+
   }
 }

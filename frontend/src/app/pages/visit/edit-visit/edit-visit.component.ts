@@ -19,7 +19,7 @@ export class EditVisitComponent implements OnInit {
     idPersona: null,
     idDepartamento: null,
     idEstatus: null,
-    idUser: null,
+    idUser: Number(localStorage.getItem('userId')),
     Fecha: null,
     HoraEntrada: null,
     HoraSalida: null,
@@ -29,6 +29,7 @@ export class EditVisitComponent implements OnInit {
   status: Status[];
   departments: Department[];
   persons: Person[];
+  recepcionista = localStorage.getItem('name');
 
   constructor(
     private visitApi: VisitApiService,

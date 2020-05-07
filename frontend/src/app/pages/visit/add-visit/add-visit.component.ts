@@ -19,7 +19,7 @@ export class AddVisitComponent implements OnInit {
     idPersona: null,
     idDepartamento: null,
     idEstatus: null,
-    idUser: 1,
+    idUser: Number(localStorage.getItem('userId')),
     Fecha: null,
     HoraEntrada: null,
     HoraSalida: null,
@@ -29,6 +29,7 @@ export class AddVisitComponent implements OnInit {
   status: Status[];
   departments: Department[];
   persons: Person[];
+  recepcionista = localStorage.getItem('name');
 
   constructor(
     private visitApi: VisitApiService,
@@ -38,6 +39,10 @@ export class AddVisitComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const idPerson = this.route.snapshot.paramMap.get('idPerson');
+    if (idPerson !== '' && idPerson !== null) {
+      this.visits.idPersona = Number(idPerson);
+    }
     this.verEstatusDepartamentoPersona();
   }
 
