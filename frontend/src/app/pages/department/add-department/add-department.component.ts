@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AddDepartmentComponent implements OnInit {
   departments: Department = {
     id: null,
-    descrip: null,
+    department: null,
   };
   constructor(
     private departmentApi: DeparmentApiService,

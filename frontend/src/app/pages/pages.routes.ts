@@ -13,6 +13,8 @@ import { EditPersonComponent } from './person/edit-person/edit-person.component'
 import { AddDepartmentComponent } from './department/add-department/add-department.component';
 import { EditDepartmentComponent } from './department/edit-department/edit-department.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddVisitComponent } from './visit/add-visit/add-visit.component';
+import { EditVisitComponent } from './visit/edit-visit/edit-visit.component';
 
 const pagesRoute: Routes = [
   {
@@ -24,6 +26,8 @@ const pagesRoute: Routes = [
       { path: 'personas/agregar', component: AddPersonComponent },
       { path: 'personas/editar/:id', component: EditPersonComponent },
       { path: 'visitas', component: VisitComponent },
+      { path: 'visitas/agregar', component: AddVisitComponent },
+      { path: 'visitas/editar/:id', component: EditVisitComponent},
       { path: 'departamentos', component: DepartmentComponent },
       { path: 'departamentos/agregar', component: AddDepartmentComponent },
       { path: 'departamentos/editar/:id', component: EditDepartmentComponent },

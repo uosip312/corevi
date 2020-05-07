@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use App\User;//esta es la ruta actual de tu
 
 class AuthController extends Controller
 {
@@ -22,15 +25,24 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(Request $r)
     {
-        $credentials = request(['user', 'pass']);
-
-        if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Usuario o Contraseña no existe'], 401);
+        if ( empty( $r->user ) || empty( $r->pass) )
+        {
+            return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
         }
-
-        return $this->respondWithToken($token);
+        //vamos a buscar el usuario introducido para validar contra el pass que enviaron.
+        $user = User::where('user',$r->user)->first(); //hice una consulta con el where, con el first obtuve el primer registro
+        //validamos si trajo dato, si no trajo erro generico.
+        if (empty($user->user) ) { //si viene en blanco entonces no debe existir ese objeto user
+            return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
+        }
+        if($user->pass == $r->pass){
+            $_token = JWTAuth::fromUser($user); //aqui simplemente creo el token con la informacion de la tabla de usuario
+            return response()->json(['token' => $_token,'estado'=>1,'usuario'=>$user->user,'name' => $user->name], 200);
+        }else{
+            return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
+        }
     }
 
     /**

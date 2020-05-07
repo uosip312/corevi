@@ -26,4 +26,10 @@ Route::group([
     Route::get('seleccionar-department', 'DepartmentController@seleccionarDepartment');
     Route::delete('eliminar-department', 'DepartmentController@eliminarDepartment');
 
+    Route::get('ver-visits', 'VisitController@verVisits');
+    Route::delete('eliminar-visit', 'VisitController@eliminarVisit');
+    Route::get('seleccionar-visit', 'VisitController@seleccionarVisit');
+    Route::get('ver-estatus', 'VisitController@verEstatus');
+    Route::put('actualizar-visit', 'VisitController@actualizarVisit');
+    Route::post('crear-visit', 'VisitController@crearVisit');
 });

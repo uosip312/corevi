@@ -36,12 +36,12 @@
                             <tbody>
                                 <tr *ngFor="let department of departments">
                                     <td>{{ department.id }}</td>
-                                    <td class="text-success">{{ department.descrip }}</td>
+                                    <td class="text-success">{{ department.department }}</td>
                                     <td class="text-right">
                                         <button type="button" [routerLink]="['/departamentos/editar', department.id]" class="btn btn-link btn-info btn-just-icon">
                                             <i class="material-icons">create</i>
                                         </button>
-                                        <button type="button" id="del" (click)="deleteDepartment(department.id, department.descrip)" class="btn btn-link btn-danger btn-just-icon">
+                                        <button type="button" id="del" (click)="deleteDepartment(department.id, department.department)" class="btn btn-link btn-danger btn-just-icon">
                                             <i class="material-icons">close</i>
                                         </button>
                                     </td>

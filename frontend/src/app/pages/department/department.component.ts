@@ -3,7 +3,6 @@ import { Department } from '../../model/department';
 import { DeparmentApiService } from 'src/app/services/deparment-api.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-department',
@@ -14,7 +13,7 @@ export class DepartmentComponent implements OnInit {
   departments: Department[];
   selectedDepartment: Department = {
     id: null,
-    descrip: null,
+    department: null,
   };
   // tslint:disable: no-string-literal
   constructor(
@@ -38,10 +37,10 @@ export class DepartmentComponent implements OnInit {
     this.router.navigate(['/departamentos/agregar']);
   }
 
-  deleteDepartment(id, descrip: string) {
+  deleteDepartment(id, department: string) {
     Swal.fire({
       icon: 'warning',
-      title: `Estas seguro que deseas eliminar a ${descrip}`,
+      title: `Estas seguro que deseas eliminar a ${department}`,
       text: 'No podras revertir esta acción',
       showCancelButton: true,
       cancelButtonColor: '#d9534f',

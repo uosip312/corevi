@@ -1,4 +1,4 @@
 export class Department {
-         descrip: string;
+         department: string;
          id?: number;
        }

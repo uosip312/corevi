@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Person;
 use Illuminate\Http\Request;
 use DB;
 
@@ -40,7 +39,7 @@ class PersonController extends Controller
 
     public function verPerson()
     {
-        $query = "SELECT id, nombre, cedula, telefono FROM person";
+        $query = "SELECT id, nombre, cedula, telefono FROM person ORDER BY nombre ASC";
         $person = DB::select($query);
         return $person;
     }

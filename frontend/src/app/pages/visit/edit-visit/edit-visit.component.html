@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-md-10">
+        <div class="card ">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">today</i>
+                </div>
+                <h4 class="card-title">Actualizar Visita</h4>
+            </div>
+            <form class="form-horizontal" (ngSubmit)="onSubmit()" #formPerson="ngForm">
+                <div class="card-body ">
+                    <div class="row">
+                        <label for="idPerson" class="col-md-4 col-form-label">Persona</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" name="idPerson" [(ngModel)]="visits.idPersona">
+                                  <option *ngFor="let p of persons" [ngValue]="p.id">{{p.nombre}} - {{p.cedula}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="idDepartamento" class="col-md-4 col-form-label">Departamento</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" name="idDepartamento" [(ngModel)]="visits.idDepartamento">
+                                 <option *ngFor="let d of departments" [ngValue]="d.id">{{ d.department }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="status" class="col-md-4 col-form-label">Estatus</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" data-style="btn btn-link" name="idEstatus" [(ngModel)]="visits.idEstatus">
+                                  <option *ngFor="let s of status" [ngValue]="s.id">{{s.status}}</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="Fecha" class="col-md-4 col-form-label">Fecha</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input class="form-control datepicker" type="date" name="Fecha" [(ngModel)]="visits.Fecha">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="HoraEntrada" class="col-md-4 col-form-label">Hora Entrada</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input class="form-control" type="time" name="HoraEntrada" [(ngModel)]="visits.HoraEntrada">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="HoraSalida" class="col-md-4 col-form-label">Hora Salida</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input class="form-control" type="time" name="HoraSalida" [(ngModel)]="visits.HoraSalida">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="Observacion" class="col-md-4 col-form-label">Observacion</label>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <textarea class="form-control" type="text" name="Observacion" row="2" [(ngModel)]="visits.Observacion"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer ">
+                    <button type="submit" class="btn btn-fill btn-success">Actualizar</button>
+                    <button class="btn btn-fill btn-danger" (click)="volver()">Atras</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
