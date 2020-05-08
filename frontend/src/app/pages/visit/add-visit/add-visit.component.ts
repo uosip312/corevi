@@ -24,6 +24,9 @@ export class AddVisitComponent implements OnInit {
     HoraEntrada: null,
     HoraSalida: null,
     Observacion: null,
+    nombre: null,
+    status: null,
+    department: null,
   };
 
   status: Status[];

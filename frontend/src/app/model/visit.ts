@@ -10,4 +10,7 @@ export class Visit {
   HoraEntrada: Time;
   HoraSalida: Time;
   Observacion: string;
+  nombre: string;
+  department: string;
+  status: string;
 }

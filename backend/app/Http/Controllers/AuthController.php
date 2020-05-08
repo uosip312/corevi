@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\User;//esta es la ruta actual de tu
 
 class AuthController extends Controller
@@ -28,9 +28,10 @@ class AuthController extends Controller
      */
     public function login(Request $r)
     {
+        $pass = "";
         if ( empty( $r->user ) || empty( $r->pass) )
         {
-            return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
+            return response()->json(['error' => 'Falta Usuario o Contraseña'], 401);
         }
         //vamos a buscar el usuario introducido para validar contra el pass que enviaron.
         $user = User::where('user',$r->user)->first(); //hice una consulta con el where, con el first obtuve el primer registro
@@ -38,26 +39,19 @@ class AuthController extends Controller
         if (empty($user->user) ) { //si viene en blanco entonces no debe existir ese objeto user
             return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
         }
-       // $pass = Hash::make($r->pass); //espera no es necesario hacer eso
-        if (Hash::check($r->pass, $user->pass)) {//esto hace el cehck
-            if($user->pass == $pass){
+        $pass = Hash::make($r->pass);
+        if(Hash::check($r->pass, $user->pass)){
                 $_token = JWTAuth::fromUser($user); //aqui simplemente creo el token con la informacion de la tabla de usuario
-                return response()->json(['token' => $_token,'userId'=>$user->id,'name' => $user->name, 'role' => $user->role], 200);
-            }else{
-                return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
-            }
+                return response()->json(['token' => $_token, 'userId' => $user->id, 'name' => $user->name, 'role' => $user->role], 200);
+        } //si le doy a actualizar ahi va a hacerle un hash al que ya existe o que?
+        else{
+            return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
         }
+
+
     }
 
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function me()
-    {
-        return response()->json(auth()->user());
-    }
+
 
     /**
      * Log the user out (Invalidate the token).
@@ -71,31 +65,4 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function refresh()
-    {
-        return $this->respondWithToken(auth()->refresh());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'username' => auth()->user()->name,
-            'role' => auth()->user()->role
-        ]);
-    }
 }

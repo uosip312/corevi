@@ -1,9 +1,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-success btn-round" (click)="addDepartment()">
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success btn-round" (click)="addDepartment()">
                 <i class="material-icons">add_circle</i> Agregar
-            </button>
+              </button>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Buscar...">
+
+                </div>
+            </div>
         </div>
         <div class="col-md-12">
             <div class="card">
@@ -34,7 +42,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr *ngFor="let department of departments">
+                                <tr *ngFor="let department of departments  | searchdepartment: searchText">
                                     <td>{{ department.id }}</td>
                                     <td class="text-success">{{ department.department }}</td>
                                     <td class="text-right">

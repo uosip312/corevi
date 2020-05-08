@@ -1,9 +1,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <button type="button" class="btn btn-success btn-round" (click)="addUser()">
-        <i class="material-icons">add_circle</i> Agregar
-      </button>
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success btn-round" (click)="addUser()">
+                <i class="material-icons">add_circle</i> Agregar
+              </button>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Buscar...">
+
+                </div>
+            </div>
         </div>
         <div class="col-md-12">
             <div class="card">
@@ -38,11 +46,11 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr *ngFor="let user of users">
+                                <tr *ngFor="let user of users  | searchuser : searchText">
                                     <td>{{ user.id }}</td>
                                     <td class="text-success">{{ user.name }}</td>
                                     <td>{{ user.user }}</td>
-                                    <td>{{ user.role }}</td>
+                                    <td>{{ user.role == '1' ? 'Administrador' : 'Recepcionista' }}</td>
                                     <td class="text-right">
                                         <button type="button" [routerLink]="['/usuarios/editar', user.id]" class="btn btn-link btn-info btn-just-icon">
                       <i class="material-icons">create</i>

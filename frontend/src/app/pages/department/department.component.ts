@@ -15,6 +15,7 @@ export class DepartmentComponent implements OnInit {
     id: null,
     department: null,
   };
+  searchText: string;
   // tslint:disable: no-string-literal
   constructor(
     private departmentApi: DeparmentApiService,

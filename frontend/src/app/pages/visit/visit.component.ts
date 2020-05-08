@@ -21,20 +21,11 @@ export class VisitComponent implements OnInit {
     HoraEntrada: null,
     HoraSalida: null,
     Observacion: null,
-  };
-
-  readVisit = {
-    Fecha: null,
-    HoraEntrada: null,
-    HoraSalida: null,
-    Observacion: null,
-    department: null,
-    id: null,
-    idUser: null,
     nombre: null,
     status: null,
+    department: null,
   };
-
+  searchText: string;
   constructor(private visitApi: VisitApiService, private router: Router) {}
 
   ngOnInit() {
@@ -42,9 +33,7 @@ export class VisitComponent implements OnInit {
   }
 
   getVisit() {
-    this.visitApi
-      .getVisit()
-      .subscribe((result: any) => (this.readVisit = result));
+    this.visitApi.getVisit().subscribe((result: any) => (this.visits = result));
   }
   addVisit() {
     this.router.navigate(['/visitas/agregar']);

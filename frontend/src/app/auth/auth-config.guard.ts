@@ -19,15 +19,15 @@ export class AuthConfigGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       if ( this.authService.isLoggedIn !== true ) {
         Swal.fire({
-          icon: "error",
-          title: "Oops... Acceso no Permitido!",
-          text: "Debes iniciar sesión",
-          confirmButtonColor: "#3085d6",
+          icon: 'error',
+          title: 'Oops... Acceso no Permitido!',
+          text: 'Debes iniciar sesión',
+          confirmButtonColor: '#3085d6',
           allowOutsideClick: false,
-          confirmButtonText: "Ir al Login",
+          confirmButtonText: 'Ir al Login',
         }).then((result) => {
           if (result.value) {
-            this.router.navigate(["/login"]);
+            this.router.navigate(['/login']);
           }
         });
       }

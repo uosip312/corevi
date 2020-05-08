@@ -3,9 +3,9 @@
         <div class="card ">
             <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon">
-                    <i class="material-icons">today</i>
+                    <i class="material-icons">account_circle</i>
                 </div>
-                <h4 class="card-title">Registro de Visita</h4>
+                <h4 class="card-title">Actualizar Usuario</h4>
             </div>
             <form class="form-horizontal" (ngSubmit)="onSubmit()" #formPerson="ngForm">
                 <div class="card-body ">
@@ -29,7 +29,7 @@
                         <label for="pass" class="col-md-4 col-form-label">Contraseña</label>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <input class="form-control" type="text" name="pass" [(ngModel)]="user.pass">
+                                <input class="form-control" type="password" name="pass" [(ngModel)]="user.pass">
                             </div>
                         </div>
                     </div>

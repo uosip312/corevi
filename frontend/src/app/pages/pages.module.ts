@@ -25,6 +25,10 @@ import { AddVisitComponent } from './visit/add-visit/add-visit.component';
 import { EditVisitComponent } from './visit/edit-visit/edit-visit.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
+import { SearchpersonPipe } from './person/searchperson.pipe';
+import { SearchvisitPipe } from './visit/searchvisit.pipe';
+import { SearchuserPipe } from './user/searchuser.pipe';
+import { SearchdepartmentPipe } from './department/searchdepartment.pipe';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { AddUserComponent } from './user/add-user/add-user.component';
     AddVisitComponent,
     EditVisitComponent,
     EditUserComponent,
-    AddUserComponent],
+    AddUserComponent,
+    SearchpersonPipe,
+    SearchvisitPipe,
+    SearchuserPipe,
+    SearchdepartmentPipe],
   exports: [
     PagesComponent,
     DashboardComponent,

@@ -17,6 +17,7 @@ export class PersonComponent implements OnInit {
     cedula: null,
     telefono: null,
   };
+  searchText: string;
   // tslint:disable: no-string-literal
   constructor(private personApi: PersonApiService, private router: Router) {}
 

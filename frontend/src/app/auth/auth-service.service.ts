@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { User } from '../model/user';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,16 @@ export class AuthServiceService {
         this.router.navigate(['/inicio']);
         return result;
       },
-      (error) => console.log(error)
+      (error) => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: `Oops... ${JSON.stringify(error.error.error)}`,
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          timer: 2500
+        });
+      }
     );
   }
 
@@ -39,8 +48,6 @@ export class AuthServiceService {
   }
 
   doLogout() {
-    return this.http.post(`${this.baseUrl}/logout`, User).subscribe((res: any) => {
-      console.log(res);
       // Elimina usuario del almacenamiento local para desloguearlo
       const removeToken = localStorage.removeItem('access_token');
       localStorage.removeItem('userId');
@@ -49,7 +56,5 @@ export class AuthServiceService {
       if (removeToken == null) {
         this.router.navigate(['/login']);
       }
-    });
-
   }
 }

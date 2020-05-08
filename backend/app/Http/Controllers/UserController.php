@@ -39,9 +39,15 @@ class UserController extends Controller
         if (empty($r->user) || empty($r->pass) || empty($r->name) || empty($r->role)) {
             return ['resultado' => false, 'mensaje' => 'TODOS LOS CAMPOS SON OBLIGATORIOS'];
         } else {
-            $pass = Hash::make($r->pass);
-            $query = "UPDATE users SET user = '$r->user',pass='$pass',name='$r->name',role='$r->role' WHERE id = $r->id";
-            $result = DB::update($query);
+            if($r->pass == "poner contraseña"){
+                $query = "UPDATE users SET user = '$r->user',name='$r->name',role='$r->role' WHERE id = $r->id";
+                $result = DB::update($query);
+            }else {
+                $pass = Hash::make($r->pass);
+                $query = "UPDATE users SET user = '$r->user',pass='$pass',name='$r->name',role='$r->role' WHERE id = $r->id";
+                $result = DB::update($query);
+
+            }
             if (!empty($result)) {
                 return ['resultado' => true, 'mensaje' => 'EL USUARIO SE ACTUALIZO EXITOSAMENTE'];
             } else {
