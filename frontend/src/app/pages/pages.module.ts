@@ -23,6 +23,8 @@ import { AddDepartmentComponent } from './department/add-department/add-departme
 import { ProfileComponent } from './profile/profile.component';
 import { AddVisitComponent } from './visit/add-visit/add-visit.component';
 import { EditVisitComponent } from './visit/edit-visit/edit-visit.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { EditVisitComponent } from './visit/edit-visit/edit-visit.component';
     AddDepartmentComponent,
     ProfileComponent,
     AddVisitComponent,
-    EditVisitComponent],
+    EditVisitComponent,
+    EditUserComponent,
+    AddUserComponent],
   exports: [
     PagesComponent,
     DashboardComponent,

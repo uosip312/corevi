@@ -16,6 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddVisitComponent } from './visit/add-visit/add-visit.component';
 import { EditVisitComponent } from './visit/edit-visit/edit-visit.component';
 import { AuthConfigGuard } from '../auth/auth-config.guard';
+import { AddUserComponent } from './user/add-user/add-user.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 const pagesRoute: Routes = [
   {
@@ -35,6 +37,8 @@ const pagesRoute: Routes = [
       { path: 'departamentos/agregar', component: AddDepartmentComponent },
       { path: 'departamentos/editar/:id', component: EditDepartmentComponent },
       { path: 'usuarios', component: UserComponent },
+      { path: 'usuarios/agregar', component: AddUserComponent },
+      { path: 'usuarios/editar/:id', component: EditUserComponent },
       { path: 'reportes', component: ReportComponent },
       { path: 'perfil', component: ProfileComponent},
       { path: '', redirectTo: '/inicio', pathMatch: 'full' },

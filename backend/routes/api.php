@@ -32,4 +32,10 @@ Route::group([
     Route::get('ver-estatus', 'VisitController@verEstatus');
     Route::put('actualizar-visit', 'VisitController@actualizarVisit');
     Route::post('crear-visit', 'VisitController@crearVisit');
+
+    Route::put('actualiza-user', 'UserController@actualizarUser');
+    Route::post('crear-user', 'UserController@crearUser');
+    Route::get('ver-user', 'UserController@verUsers');
+    Route::get('seleccionar-user', 'UserController@seleccionarUser');
+    Route::delete('eliminar-user', 'UserController@eliminarUser');
 });

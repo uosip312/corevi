@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\Hash;
 use App\User;//esta es la ruta actual de tu
 
 class AuthController extends Controller
@@ -37,11 +38,14 @@ class AuthController extends Controller
         if (empty($user->user) ) { //si viene en blanco entonces no debe existir ese objeto user
             return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
         }
-        if($user->pass == $r->pass){
-            $_token = JWTAuth::fromUser($user); //aqui simplemente creo el token con la informacion de la tabla de usuario
-            return response()->json(['token' => $_token,'userId'=>$user->id,'name' => $user->name, 'role' => $user->role], 200);
-        }else{
-            return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
+       // $pass = Hash::make($r->pass); //espera no es necesario hacer eso
+        if (Hash::check($r->pass, $user->pass)) {//esto hace el cehck
+            if($user->pass == $pass){
+                $_token = JWTAuth::fromUser($user); //aqui simplemente creo el token con la informacion de la tabla de usuario
+                return response()->json(['token' => $_token,'userId'=>$user->id,'name' => $user->name, 'role' => $user->role], 200);
+            }else{
+                return response()->json(['error' => 'Usuario o Contraseña incorrecto'], 401);
+            }
         }
     }
 

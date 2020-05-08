@@ -12,7 +12,8 @@ export class HeaderComponent implements OnInit {
     id: Number(localStorage.getItem('userId')),
     name: localStorage.getItem('name'),
     role: Number(localStorage.getItem('role')),
-    user: null
+    user: null,
+    pass: null
   };
 
 

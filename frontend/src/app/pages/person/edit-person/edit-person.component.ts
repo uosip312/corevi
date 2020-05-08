@@ -36,20 +36,20 @@ export class EditPersonComponent implements OnInit {
   onSubmit() {
     this.personApi.updatePerson(this.person).subscribe((result) => {
       // tslint:disable: no-string-literal
-      if (result["resultado"] === true) {
+      if (result['resultado'] === true) {
         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: result["mensaje"],
+          position: 'top-end',
+          icon: 'success',
+          title: result['mensaje'],
           showConfirmButton: false,
           timer: 1500
         });
-        this.router.navigate(["/personas"]);
+        this.router.navigate(['/personas']);
       } else {
         Swal.fire({
-          position: "top-end",
-          icon: "error",
-          title: result["mensaje"],
+          position: 'top-end',
+          icon: 'error',
+          title: result['mensaje'],
           showConfirmButton: false,
           timer: 1500
         });

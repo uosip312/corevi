@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
 
@@ -34,10 +35,12 @@ class UserController extends Controller
 
     public function actualizarUser(Request $r)
     {
+        $pass = "";
         if (empty($r->user) || empty($r->pass) || empty($r->name) || empty($r->role)) {
             return ['resultado' => false, 'mensaje' => 'TODOS LOS CAMPOS SON OBLIGATORIOS'];
         } else {
-            $query = "UPDATE person SET user = '$r->user',pass='$r->pass',name='$r->name',role='$r->role' WHERE id = $r->id";
+            $pass = Hash::make($r->pass);
+            $query = "UPDATE users SET user = '$r->user',pass='$pass',name='$r->name',role='$r->role' WHERE id = $r->id";
             $result = DB::update($query);
             if (!empty($result)) {
                 return ['resultado' => true, 'mensaje' => 'EL USUARIO SE ACTUALIZO EXITOSAMENTE'];
@@ -47,15 +50,17 @@ class UserController extends Controller
         }
     }
 
-    public function crearPerson(Request $r)
+    public function crearUser(Request $r)
     {
-        if (empty($r->nombre) || empty($r->cedula)) {
+        $pass = "";
+        if (empty($r->user) || empty($r->pass) || empty($r->name) || empty($r->role)) {
             return ['resultado' => false, 'mensaje' => 'TODOS LOS CAMPOS SON OBLIGATORIOS'];
         } else {
-            $query = "INSERT INTO person (user, pass, name,role) VALUES ('$r->user','$r->pass','$r->name','$r->role')";
+            $pass = Hash::make($r->pass);
+            $query = "INSERT INTO users (user, pass, name,role) VALUES ('$r->user','$pass','$r->name','$r->role')";
             $result = DB::insert($query);
             if (!empty($result)) {
-                return ['resultado' => true, 'mensaje' => 'LA PERSONA SE HA CREADO EXITOSAMENTE'];
+                return ['resultado' => true, 'mensaje' => 'EL USUARIO SE HA CREADO EXITOSAMENTE'];
             } else {
                 return ['resultado' => false, 'mensaje' => 'Al parecer hubo un error con el registro'];
             }

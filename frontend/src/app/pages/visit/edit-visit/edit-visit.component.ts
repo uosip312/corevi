@@ -44,7 +44,6 @@ export class EditVisitComponent implements OnInit {
     return this.httpClient.get(`http://localhost:8080/corevi/backend/public/api/seleccionar-visit?id=${idVisit}`)
     .subscribe((result: Visit) => {
       this.visits = result['0'];
-      console.log(result['0']);
     });
   }
 
