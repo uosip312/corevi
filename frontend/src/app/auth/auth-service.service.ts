@@ -17,7 +17,6 @@ export class AuthServiceService {
   login(user: string, pass: string) {
     return this.http.post(`${this.baseUrl}/login`, { user, pass }).subscribe(
       (result: any) => {
-        console.log(result);
         localStorage.setItem('access_token', result.token);
         localStorage.setItem('userId', result.userId);
         localStorage.setItem('name', result.name);

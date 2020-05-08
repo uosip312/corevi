@@ -36,4 +36,11 @@ Route::group([
     Route::get('ver-user', 'UserController@verUsers');
     Route::get('seleccionar-user', 'UserController@seleccionarUser');
     Route::delete('eliminar-user', 'UserController@eliminarUser');
+
+    Route::get('contar-person', 'DashboardController@contarPerson');
+    Route::get('contar-department', 'DashboardController@contarDepartment');
+    Route::get('contar-visit', 'DashboardController@contarVisit');
+    Route::get('contar-user', 'DashboardController@contarUser');
+    Route::get('ver-vipendientes', 'DashboardController@visitPendientes');
+    Route::get('contar-vide', 'DashboardController@contarVisitDepartment');
 });

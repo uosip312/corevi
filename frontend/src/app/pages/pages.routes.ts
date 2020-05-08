@@ -7,7 +7,6 @@ import { PersonComponent } from './person/person.component';
 import { VisitComponent } from './visit/visit.component';
 import { DepartmentComponent } from './department/department.component';
 import { UserComponent } from './user/user.component';
-import { ReportComponent } from './report/report.component';
 import { AddPersonComponent } from './person/add-person/add-person.component';
 import { EditPersonComponent } from './person/edit-person/edit-person.component';
 import { AddDepartmentComponent } from './department/add-department/add-department.component';
@@ -39,7 +38,6 @@ const pagesRoute: Routes = [
       { path: 'usuarios', component: UserComponent },
       { path: 'usuarios/agregar', component: AddUserComponent },
       { path: 'usuarios/editar/:id', component: EditUserComponent },
-      { path: 'reportes', component: ReportComponent },
       { path: 'perfil', component: ProfileComponent},
       { path: '', redirectTo: '/inicio', pathMatch: 'full' },
     ],

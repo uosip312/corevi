@@ -70,7 +70,7 @@ class VisitController extends Controller
         if (empty($r->idPersona) || empty($r->idDepartamento)) {
             return ['resultado' => false, 'mensaje' => 'LA PERSONA Y DEPARTAMENTO SON OBLIGATORIOS'];
         } else {
-            $query = "INSERT INTO visits (idPersona,idDepartamento,idEstatus,idUser,Fecha,HoraEntrada,Observacion) VALUES ('$r->idPersona','$r->idDepartamento','$r->idEstatus',$r->idUser,'$r->Fecha','$r->HoraEntrada','$r->Observacion')";
+            $query = "INSERT INTO visits (idPersona,idDepartamento,idEstatus,idUser,Fecha,HoraEntrada,HoraSalida,Observacion) VALUES ('$r->idPersona','$r->idDepartamento','$r->idEstatus',$r->idUser,'$r->Fecha','$r->HoraEntrada','$r->HoraSalida:00','$r->Observacion')";
             $visit = DB::insert($query);
             if (!empty($visit)) {
                 return ['resultado' => true, 'mensaje' => 'EL REGISTRO SE HA CREADO EXITOSAMENTE'];

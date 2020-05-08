@@ -11,7 +11,6 @@ import { DepartmentComponent } from './department/department.component';
 import { PersonComponent } from './person/person.component';
 import { VisitComponent } from './visit/visit.component';
 import { UserComponent } from './user/user.component';
-import { ReportComponent } from './report/report.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
 
@@ -36,7 +35,6 @@ import { SearchdepartmentPipe } from './department/searchdepartment.pipe';
     PersonComponent,
     VisitComponent,
     UserComponent,
-    ReportComponent,
     DashboardComponent,
     PagesComponent,
     EditPersonComponent,
@@ -58,8 +56,7 @@ import { SearchdepartmentPipe } from './department/searchdepartment.pipe';
     DepartmentComponent,
     PersonComponent,
     VisitComponent,
-    UserComponent,
-    ReportComponent
+    UserComponent
   ],
   imports: [
     CommonModule,
