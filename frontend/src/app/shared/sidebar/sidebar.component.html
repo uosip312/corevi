@@ -10,7 +10,7 @@ Tip 2: you can also add an image using data-image tag
         </a>
     </div>
     <div class="sidebar-wrapper">
-        <ul class="nav">
+        <ul class="nav" *ngIf="user.role == 1 else role">
             <li class="nav-item">
                 <a class="nav-link" href="#/inicio">
                     <i class="material-icons">dashboard</i>
@@ -41,7 +41,28 @@ Tip 2: you can also add an image using data-image tag
                     <p>Usuarios</p>
                 </a>
             </li>
-            <!-- your sidebar here -->
         </ul>
+        <ng-template #role>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#/inicio">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#/visitas">
+                        <i class="material-icons">today</i>
+                        <p>Visitas</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#/personas">
+                        <i class="material-icons">face</i>
+                        <p>Personas</p>
+                    </a>
+                </li>
+            </ul>
+        </ng-template>
     </div>
 </div>

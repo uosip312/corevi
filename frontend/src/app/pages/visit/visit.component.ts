@@ -24,6 +24,7 @@ export class VisitComponent implements OnInit {
     nombre: null,
     status: null,
     department: null,
+    visitas: null,
   };
   searchText: string;
   constructor(private visitApi: VisitApiService, private router: Router) {}

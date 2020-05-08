@@ -10,8 +10,8 @@ class DashboardController extends Controller
     public function contarPerson()
     {
         $query = "SELECT COUNT(nombre) AS personas FROM person";
-        $result = DB::select($query);
-        return $result;
+        $result = DB::select(DB::raw($query));
+        return response()->json($result);
     }
 
     public function contarDepartment()

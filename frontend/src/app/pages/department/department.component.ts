@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Department } from '../../model/department';
+import { AuthServiceService } from '../../auth/auth-service.service';
 import { DeparmentApiService } from 'src/app/services/deparment-api.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -15,6 +16,7 @@ export class DepartmentComponent implements OnInit {
     id: null,
     department: null,
   };
+  role: number;
   searchText: string;
   // tslint:disable: no-string-literal
   constructor(
@@ -23,7 +25,15 @@ export class DepartmentComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.checkRole();
     this.getDepartment();
+  }
+
+  checkRole() {
+    this.role = Number(localStorage.getItem('role'));
+    if (this.role === 2) {
+      this.router.navigate(['/inicio']);
+    }
   }
 
   getDepartment() {

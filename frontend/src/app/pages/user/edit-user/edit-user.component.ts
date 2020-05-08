@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Person } from 'src/app/model/person';
 import Swal from 'sweetalert2';
 
 @Component({

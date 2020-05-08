@@ -27,6 +27,7 @@ export class AddVisitComponent implements OnInit {
     nombre: null,
     status: null,
     department: null,
+    visitas: null
   };
 
   status: Status[];

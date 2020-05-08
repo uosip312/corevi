@@ -13,4 +13,5 @@ export class Visit {
   nombre: string;
   department: string;
   status: string;
+  visitas: string;
 }
